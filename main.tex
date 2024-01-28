@@ -1,0 +1,86 @@
+\documentclass[
+	ngerman,
+	aspectratio=43,
+	color={accentcolor=11c},
+	logo=false,
+	colorframetitle=false,
+	]{tudabeamer}
+\usepackage[main=ngerman]{babel}
+\usepackage{movie15}
+\usepackage{tikz}
+\usepackage{xcolor}
+\makeatletter
+    \newenvironment{image-frame}{
+    	\setbeamertemplate{beamercolorbox}{}
+    	\setbeamercolor{background canvas}{bg=black}
+        \setbeamertemplate{frametitle}[default]
+        \setbeamertemplate{headline}[default]
+        \setbeamertemplate{footline}[default]{}
+        \def\beamer@entrycode{\vspace*{-\headheight}}
+    }{}
+\makeatother
+
+\let\code\texttt
+
+\title{Seminar Algorithmen zum Fahrplanentwurf}
+\subtitle{Graphenmodelle}
+\author[R. Buhlmann]{Robin Buhlmann}
+\department{Fachgebiet Algorithmik}
+
+\logo*{\includegraphics{example-image-16x9}}
+\titlegraphic*{\includegraphics{example-image}}
+\date{20.01.2024}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Fahrpläne als Graphen}
+\include{chapters/0.FahrplaeneAlsGraphen.tex}
+
+\section{Modell 1: Time-Expanded}
+\include{chapters/1.TimeExpanded.tex}
+
+\section{Modell 2: Time-Dependent}
+\include{chapters/2.TimeDependent.tex}
+
+\section{Vergleiche}
+\include{chapters/3.Comparisons.tex}
+
+\section{Exkurs: Implementation in MOTIS}
+\include{chapters/4.MOTIS.tex}
+
+
+
+\begin{frame}{Hinweis zur Ausrichtung (insbesondere columns)}
+	Die Standardausrichtung wurde gegenüber den Beamer-Voreinstellungen von \code{c} zu \code{t} geändert. Dies bedeutet, dass Inhalt auf der Folie oben ausgerichtet wird. Dies entspricht den Vorgaben, hat allerdings den Nachteil, dass die \code{columns}-Umgebung in diesem Fall bei der Positionierung von Bildern ungewohnte Ergebnisse erzeugt.
+
+	Die Ausrichtung kann in diesem Fall entweder global mit der Option \code{c} wieder zum Standard geändert werden, oder aber das \code{c} wird direkt an die \code{columns}-Umgebung übergeben. Zum Beispiel:
+\begin{columns}[onlytextwidth,c]%ohne das c ist die Ausrichtung verschoben
+	\column{.8\linewidth}
+	\begin{itemize}
+		\item eins
+		\item zwei
+	\end{itemize}
+	\column{.2\linewidth}
+	\includegraphics[width=\linewidth]{example-image}
+\end{columns}
+\end{frame}
+
+\subsection{Das Time-Dependent Modell}
+
+
+
+
+
+
+
+\end{document}
+
