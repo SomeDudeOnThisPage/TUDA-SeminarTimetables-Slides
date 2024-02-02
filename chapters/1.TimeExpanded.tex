@@ -1,3 +1,11 @@
+\begin{frame}
+	\vspace{2em}
+	\begin{center}
+		\includegraphics[width=.50\linewidth]{images/time-expanded/title.pdf} 
+	\end{center}
+\end{frame}
+
+
 \begin{frame}{Das Time-Expanded Modell}
 \framesubtitle{Train-Edges}
 	\begin{itemize}{}
@@ -49,12 +57,12 @@
 
 
 \subsection{Umstiegszeiten}
-\begin{frame}
-\vspace{8em}
+\begin{frame}{Frage 3}
 \begin{center}
-	\begin{LARGE}
-		Problem: Erhebliche Umsteigezeiten innerhalb von großen Stationen.
-	\end{LARGE}
+	\vspace{6em}
+	\begin{Large}
+		Wie modelliere ich Umstiegszeiten mit "{}Puffer"{}?
+	\end{Large}
 \end{center}
 \end{frame}
 
@@ -62,24 +70,13 @@
 \begin{frame}{2. Griff in die Terminologie-Kiste}
 	\framesubtitle{Realistische Umstiegsregeln}
 	\begin{itemize}
-		\item Definiere \textcolor{brown}{Konstante} und \textcolor{purple}{Variable} Umstiegsregeln:
+		\item Definiere \textcolor{green}{Konstante} und \textcolor{red}{Variable} Umstiegsregeln:
 		\begin{enumerate}
-			\item \textcolor{brown}{Standard-Umstiegszeit für alle Züge}
-			\pause
-			\item \textcolor{purple}{Regeln basierend auf Transferklassen \& Zuglinien}
-			\pause
-			\item \textcolor{purple}{Regeln zwischen einzelnen Zügen}
+			\item \textcolor{green}{Standard-Umstiegszeit für alle Züge}
+			\item \textcolor{red}{Regeln basierend auf Transferklassen \& Zuglinien}
+			\item \textcolor{red}{Regeln zwischen einzelnen Zügen}
 		\end{enumerate}
 	\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Konstante Umstiegszeiten}
-	\begin{center}
-		\begin{tikzpicture}
-			\node (img1) {\includegraphics[height=5cm]{images/time-expanded-garble.png}};
-		\end{tikzpicture}
-	\end{center}
 \end{frame}
 
 
@@ -155,23 +152,43 @@
 	\begin{block}{}
 		Problem: Der Takt unseres Fahrplans ist nicht nur ein Tag!
 	\end{block}
-	\pause
+
 	\begin{itemize}
-		\item $N$ Tage ($1440min/d$) im Taktfahrplan
-		\pause
-		\item Versehe Kanten mit einem Tupel aus Verkehstagen und Zeit: $\{[d], t\}$
-		\item Beim SP-Durchlauf: Prüfe auf validen Tag, und bestimme Zeit für den Tag
+		\item Wie würde unser Graph wachsen, wenn wir $N$ Tage modellieren würden?
+		\begin{itemize}
+			\item Wir hätten etwa $N$-mal so viele Knoten und Kanten!
+		\end{itemize}
 	\end{itemize}
 
-	\pause
+\end{frame}
+
+
+\begin{frame}{Verfeinerung 1: Verkehrstage}
+	\begin{itemize}
+		\item Versehe Knoten mit absoluter Zeit $[0,N \cdot 1440]$
+		\item Versehe Kanten mit einer Liste an Verkehstagen: $[d]$, $d \in N$
+		\item Beim SP-Durchlauf:
+	\end{itemize}
+
 	\begin{equation*}
-		Tag = floor(\frac{t_{Absolut}}{1440})
+		d_i = floor(\frac{t_{Anfrage}}{1440})
 	\end{equation*}
 
-	\pause
+	\begin{itemize}
+		\item Und wenn der Zug an Tag $d_i$ fährt:
+	\end{itemize}
+
 	\begin{equation*}
-		length(E) = t_{Ankunft} - t_{Abfahrt} \mod 1440
+		length(E) = (t_{Ankunft} - t_{Abfahrt}) \mod 1440
 	\end{equation*}
+\end{frame}
+
+
+\begin{frame}{Verfeinerung 1: Verkehrstage}
+\framesubtitle{Das ganze als Visuelles Beispiel}
+	\begin{center}
+		\includegraphics[height=6cm]{images/time-expanded/verkehrstage-beispiel.pdf} 
+	\end{center}
 \end{frame}
 
 
@@ -198,7 +215,6 @@
 	\begin{block}{}
 		Was macht Fußwege so besonders?
 	\end{block}
-	\pause
 	\begin{itemize}
 		\item Fußwege können zu jeder Zeit genutzt werden
 		\item Man könnte sagen sie sind... \textit{Zeitabhängig} (Time-Dependent)...
@@ -214,24 +230,14 @@
 	\begin{itemize}
 		\item Alle Fußwege im Graphen speichern ist nicht sinnvoll.
 		\pause
-		\item Stattdessen: Speichere Liste an Fußwegen für jede Station mit konst. Zeit
-	\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Verfeinerung 2: Fußwege}
-	\begin{itemize}
-		\item Nutze den Floyd-Warshall-Algorithmus
-		\pause
-		% Dijkstra: SP von einem Knoten zu allen anderen Knoten, nur pos. Werte
-		% Bellman-Ford: SP von einem Knoten zu allen anderen Knoten, neg. Werte
-		\item SP von allen Knoten zu allen anderen Knoten, negative Kantenwerte sind erlaubt
-		\pause
 		% Beachte Fußwege nur, wenn wir eine arrival-node verlassen
 		\item Speichere Wege in jeder Station, maskiere Wege in Suchanfragen als Kanten zwischen Stationen
+		\begin{itemize}
+			\item Durchsuche Fußwege, wenn eine Arrival-Node bearbeitet wird 
+		\end{itemize}
 		% Wenn wir N stationen im Umkreis haben, und Fußwege zu den Stationen < departure_interval sind, dann ist evtl. eine Verbindung mit Fußweg als erste "Kante" die beste!
 		% Starte Dijkstra mit intialer zeit != 0, der Zeit des Fussweges
-		\item Beachte Fußwege als Start einer Reise!
+		\item Beachte Fußwege beim Start einer Reise!
 	\end{itemize}
 \end{frame}
 
@@ -240,14 +246,14 @@
 	\begin{itemize}
 		\item Ein paar Zahlen im Jahr 2008 (\textbf{nur} Züge):
 	\end{itemize}
-
+\vspace{3em}
 	\begin{center}
 		\begin{tabular}{ c|c } 
 			Anzahl an Knoten & \\
  			\hline
  			Ankunft & 801.8 Tsd. \\
  			Abfahrt & 801.8 Tsd. \\
- 			Exchange & 556.6 Tsd. \\
+ 			\textit{Change-Departure} & 556.6 Tsd. \\
  			\hline
  			Gesamt & 2160.2 Tsd.
 		\end{tabular}
@@ -259,7 +265,7 @@
 	\begin{itemize}
 		\item Ein paar Zahlen im Jahr 2008 (\textbf{nur} Züge):
 	\end{itemize}
-
+	\vspace{2em}
 	\begin{center}
 		\begin{tabular}{ c|c } 
 			Anzahl an Kanten & \\
@@ -267,14 +273,19 @@
  			Zug & 801.8 Tsd. \\
  			Weiterfahrt & 733.7 Tsd. \\
  			Ankunft & 796.7 Tsd. \\
- 			Abfahrt & 796.7 Tsd. \\
+ 			Abfahrt & 79\textit{6}.7 Tsd. \\
  			Warten (auf Exchange-Edge) & 556.6 Tsd. \\
  			Besondere Umstiege & 20.2 Tsd. \\
  			\hline
- 			Gesamtanzahl & 3704.7 Tsd.
+ 			Gesamtanzahl & 3705.7 Tsd.
 		\end{tabular}
 	\end{center}
 \end{frame}
 
 
-
+\begin{frame}{Time-Expanded}
+	\framesubtitle{Alle Konzepte auf einen Blick}
+	\begin{center}
+		\includegraphics[height=6cm]{images/time-expanded/overview.pdf} 
+	\end{center}
+\end{frame}

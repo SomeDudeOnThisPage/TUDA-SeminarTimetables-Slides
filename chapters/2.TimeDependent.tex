@@ -1,10 +1,7 @@
-\begin{frame}{Das Time-Dependent Modell}
-	\begin{itemize}
-		\item Denken wir zurück an das erste Beispiel...
-	\end{itemize}
-
+\begin{frame}
+	\vspace{-3em}
 	\begin{center}
-		\includegraphics[width=\linewidth]{images/simple-approach-timed.pdf}
+		\includegraphics[width=.78\linewidth]{images/time-dependent/title.pdf} 
 	\end{center}
 \end{frame}
 
@@ -57,15 +54,15 @@
 	\begin{equation*}
 		travel\_time(t) = f_{(u,v)}(t) - t
 	\end{equation*}
-	\pause
 
 	\vspace{5em}
+	% z.B. Binärsuche auf geordneter Liste assoziiert mit {a, b} an Abfahrtszeiten von a
 	\begin{block}{}
 		Wie sieht so eine Funktion in der Realität aus?
 	\end{block}
 \end{frame}
 
-
+\subsection{Umstiegszeiten}
 \begin{frame}{Das Time-Dependent Modell}
 	\framesubtitle{Konstante Umstiegszeiten}
 	\begin{itemize}
@@ -93,6 +90,20 @@
 	\begin{center}
 		\includegraphics[width=\linewidth]{images/time-dependent/zugroute-problem.pdf}
 	\end{center}
+\end{frame}
+
+
+\begin{frame}{Das Time-Dependent Modell}
+	\framesubtitle{Konstante Umstiegszeiten}
+
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/time-dependent/zugroute-problem-beispiel.pdf}
+	\end{center}
+
+	\pause
+	\begin{block}{}
+		In welchen Fällen aber wäre es doch besser, die S3 zu nehmen?
+	\end{block}
 \end{frame}
 
 
@@ -147,7 +158,7 @@
 	\end{center}
 \end{frame}
 
-
+\subsection{Verfeinerungen}
 \begin{frame}{Fußwege}
 	\begin{itemize}
 		\item Fußwege sind immer abhängig von der Zeit, also einfach zu modellieren
@@ -158,26 +169,6 @@
 	\end{center}
 \end{frame}
 
-
-\begin{frame}{Größenordnungen}
-	\begin{itemize}
-		\item Ein paar Zahlen im Jahr 2007 (\textbf{nur} Züge):
-		\begin{itemize}
-			\item 56,994 Züge, 8916 Stationen
-		\end{itemize}
-	\end{itemize}
-	
-	\begin{center}
-		\begin{tabular}{ c||c|c } 
-			& Time Dependent & Time Expanded \\
- 			\hline
- 			\hline
- 			Knoten & 240 Tsd. & 3479 Tsd. \\
- 			Kanten & 670 Tsd. & 5633 Tsd. \\
- 			\hline
-		\end{tabular}
-	\end{center}
-\end{frame}
 
 
 
