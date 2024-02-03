@@ -10,6 +10,8 @@
 \usepackage{tikz}
 \usepackage{xcolor}
 \usepackage{ulem}
+\usepackage{lipsum}
+
 \makeatletter
     \newenvironment{image-frame}{
     	\setbeamertemplate{beamercolorbox}{}
@@ -21,6 +23,14 @@
     }{}
 \makeatother
 
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\let\footnoterule\relax
 \let\code\texttt
 
 \title{Seminar Algorithmen zum Fahrplanentwurf}
@@ -29,7 +39,7 @@
 \department{Fachgebiet Algorithmik}
 
 %\logo*{\includegraphics{example-image-16x9}}
-\titlegraphic*{\includegraphics{example-image}}
+\titlegraphic*{\includegraphics[width=.52\linewidth]{images/main.pdf}}
 \date{20.01.2024}
 
 %\AtBeginSection[]
@@ -41,6 +51,7 @@
 
 \begin{document}
 
+%\footnotesize{8pt}
 \maketitle
 
 \include{chapters/0.FahrplaeneAlsGraphen.tex}
@@ -58,6 +69,26 @@
 \include{chapters/4.MOTIS.tex}
 
 \include{chapters/5.Conclusion.tex}
+
+
+\begin{frame}{Literaturquellen}
+	\begin{itemize}
+		\item Schnee, Matthias, \textit{Fully Realistic Multi-Criteria Timetable Information Systems}, 2009, Technische Universität Darmstadt
+		\item Evangelia Pyrga, Frank Schulz, Dorothea Wagner, Christos Zaroliagis, \textit{Towards Realistic Modeling of Time-Table Information through the Time-Dependent Approach}, Electronic Notes in Theoretical Computer Science, Volume 92, 2004, Pages 85-103
+		\item Evangelia Pyrga, Frank Schulz, Dorothea Wagner, Christos Zaroliagis \textit{Efficient models for timetable information in public transportation systems.} ACM Journal of Experimental Algorithmics, Volume 12, 2007
+		\item Evangelia Pyrga, Frank Schulz, Dorothea Wagner, Christos Zaroliagis  \textit{Two Approaches for Time-Table Information: a Comparison of Models and Performance.}, Konstanzer Schriften in Mathematik und Informatik, Volume 190, 2003
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Weitere Bildquellen nach Folie}
+	\begin{itemize}
+		\item Verkehrsmittel (8): Wikimedia
+		\item Portrait von Edsger W. Dijkstra (3, 4): https://de.wikipedia.org/wiki/Edsger\_W.\_Dijkstra (06.01.23)
+		\item Fahrplanauszüge (3, 4, 18, 19): www.rmv.de und www.bahn.de (07.01.23)
+		\item Abhängigkeitsgraph (55), (sowie \textit{alle weiteren Diagramme in Eigenanfertigung nach}) Schnee, Matthias, \textit{Fully Realistic Multi-Criteria Timetable Information Systems}, 2009, Technische Universität Darmstadt
+	\end{itemize}
+\end{frame}
 
 
 \end{document}

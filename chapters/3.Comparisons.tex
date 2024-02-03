@@ -1,18 +1,29 @@
 \begin{frame}{Größenordnungen}
 	\begin{itemize}
-		\item Ein paar Zahlen im Jahr 2007 (\textbf{nur} Züge):
-		\begin{itemize}
-			\item 56,994 Züge, 8916 Stationen
-		\end{itemize}
+		\item DB Fahrplan 1996/97 (\textbf{nur} Züge)\blfootnote{(Pyrga et al. \textit{Time-Expanded vs Time-Dependent Models for Timetable Information})}:
 	\end{itemize}
 	
 	\begin{center}
-		\begin{tabular}{ c||c|c } 
-			& Time Dependent & Time Expanded \\
+		\begin{tabular}{ c|r|r } 
+			& Time Expanded & Time Dependent \\
  			\hline
  			\hline
- 			Knoten & 240 Tsd. & 3479 Tsd. \\
- 			Kanten & 670 Tsd. & 5633 Tsd. \\
+ 			Knoten & 931746 & 6961 \\
+ 			Kanten & 1397619 & 18664 \\
+ 			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{3em}	
+	
+	\begin{center}
+		\begin{tabular}{ l|c|c } 
+			& Time Expanded & Time Dependent \\
+ 			\hline
+ 			\hline
+ 			Algorithmus & Dijkstra & Dijkstra + Binärsuche \\
+ 			$\varnothing{}$ Laufzeit & 44.17ms & 5.61ms \\
+ 			Besuchte Knoten & 33653 & 1515 \\
  			\hline
 		\end{tabular}
 	\end{center}
@@ -21,19 +32,7 @@
 
 \begin{frame}{Performanz}
 	\begin{itemize}
-		\item TD ist besser für Single-Criteria Suche\footnote{Pyrga et al.: Experimental Comparison of Shortest Path Approaches for Timetable Information, 2004}.
-	\end{itemize}
-
-	% SEHR simple annahmen, z.b. ohne Berücksichtigung von Umstiegszeiten, etc.
-		\begin{center}
-		\includegraphics[height=5cm]{images/comparisons/comparison-simple.png} 
-	\end{center}
-\end{frame}
-
-
-\begin{frame}{Performanz}
-	\begin{itemize}
-		\item Aber: Komplexität von TD wächst schnell mit mehr Kriteria und Regeln
+		\item Aber: Komplexität von TD wächst schnell mit mehr Kriteria und Regeln\blfootnote{(Pyrga et al.: \textit{Experimental Comparison of Shortest Path Approaches for Timetable Information}, 2004)}
 		\item Also in realistischen Szenarien!
 		\begin{itemize}
 			\item TD nur $58\%$ schneller (in CPU-Zeit) als TE
