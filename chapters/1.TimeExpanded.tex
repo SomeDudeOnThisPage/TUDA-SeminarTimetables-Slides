@@ -149,8 +149,8 @@
 
 \subsection{Verfeinerungen}
 \begin{frame}{Verfeinerung 1: Verkehrstage}
-	\begin{block}{}
-		Problem: Der Takt unseres Fahrplans ist nicht nur ein Tag!
+	\begin{block}{Problem}
+		Der Takt unseres Fahrplans ist nicht nur ein Tag!
 	\end{block}
 
 	\begin{itemize}
@@ -165,9 +165,12 @@
 
 \begin{frame}{Verfeinerung 1: Verkehrstage}
 	\begin{itemize}
-		\item Versehe Knoten mit absoluter Zeit $[0,N \cdot 1440]$
+		\item Versehe Knoten mit Zeit $t_{Absolut} \mod 1440$
+		\begin{itemize}
+			\item $t_{Absolut} \in [0, N \cdot 1440]$
+		\end{itemize}
 		\item Versehe Kanten mit einer Liste an Verkehstagen: $[d]$, $d \in N$
-		\item Beim SP-Durchlauf:
+		\item Nutze Absolute Zeit beim SP-Durchlauf:
 	\end{itemize}
 
 	\begin{equation*}
@@ -193,11 +196,10 @@
 
 
 \begin{frame}{Verfeinerung 1: Verkehrstage}
-	\begin{block}{}
-		Problem: Wie behandeln wir besuchte Knoten beim SP-Durchlauf, die invalide sind?
+	\begin{block}{Problem}
+		Wie behandeln wir besuchte Knoten beim SP-Durchlauf, die invalide sind?
 	\end{block}
 
-	\pause
 	\begin{itemize}
 		\item Als Beispiel am Dijkstra: 
 		\begin{itemize}
@@ -205,14 +207,14 @@
 			\item Füge Knoten wieder am Ende des Sets ein ("{}Nächster"{} Tag).
 		\end{itemize}
 	\end{itemize}
-	\vspace{5em}
-	Weitere Verfeinerungen sind möglich\footnote{Pyrga et. al.: Efficient Models for Timetable Information in Public Transportation Systems}...
+	\vspace{7em}
+	Weitere Verfeinerungen sind möglich\footnote{(Pyrga et. al.: \textit{Efficient Models for Timetable Information in Public Transportation Systems})}...
 \end{frame}
 
 
 \begin{frame}{Verfeinerung 2: Fußwege}
 	\framesubtitle{Die Rückkehr der Terminologie-Kiste}
-	\begin{block}{}
+	\begin{block}{Frage}
 		Was macht Fußwege so besonders?
 	\end{block}
 	\begin{itemize}
@@ -253,7 +255,7 @@
  			\hline
  			Ankunft & 801.8 Tsd. \\
  			Abfahrt & 801.8 Tsd. \\
- 			\textit{Change-Departure} & 556.6 Tsd. \\
+ 			Change & 556.6 Tsd. \\
  			\hline
  			Gesamt & 2160.2 Tsd.
 		\end{tabular}
@@ -265,21 +267,24 @@
 	\begin{itemize}
 		\item Ein paar Zahlen im Jahr 2008 (\textbf{nur} Züge):
 	\end{itemize}
-	\vspace{2em}
+	\vspace{1em}
 	\begin{center}
 		\begin{tabular}{ c|c } 
 			Anzahl an Kanten & \\
  			\hline
  			Zug & 801.8 Tsd. \\
  			Weiterfahrt & 733.7 Tsd. \\
- 			Ankunft & 796.7 Tsd. \\
- 			Abfahrt & 79\textit{6}.7 Tsd. \\
- 			Warten (auf Exchange-Edge) & 556.6 Tsd. \\
+ 			\textit{Leaving} & 796.7 Tsd. \\
+ 			\textit{Entering} & 79\textit{6}.7 Tsd. \\
+ 			\textit{Waiting} & 556.6 Tsd. \\
  			Besondere Umstiege & 20.2 Tsd. \\
  			\hline
  			Gesamtanzahl & 3705.7 Tsd.
 		\end{tabular}
 	\end{center}
+	\begin{block}{Erinnerung}
+		68073 Zuglinien $\rightarrow 801.8k - 68k \approx 133k$
+	\end{block}
 \end{frame}
 
 
