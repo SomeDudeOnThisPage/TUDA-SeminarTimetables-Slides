@@ -1,9 +1,9 @@
-\begin{frame}
-	\vspace{2em}
-	\begin{center}
-		\includegraphics[width=.50\linewidth]{images/time-expanded/title.pdf} 
-	\end{center}
-\end{frame}
+%\begin{frame}
+%	\vspace{2em}
+%	\begin{center}
+%		\includegraphics[width=.50\linewidth]{images/time-expanded/title.pdf} 
+%	\end{center}
+%\end{frame}
 
 
 \begin{frame}{Das Time-Expanded Modell}
@@ -31,15 +31,15 @@
 \end{frame}
 
 
-\begin{frame}{Das Time-Expanded Modell}
-\framesubtitle{Was bringt uns das Ganze jetzt?}
-\vspace{6em}
-\begin{center}
-	\begin{LARGE}
-		Kanten innerhalb einer Station $\approx$ "{}Umstiege"{}
-	\end{LARGE}
-\end{center}
-\end{frame}
+%\begin{frame}{Das Time-Expanded Modell}
+%\framesubtitle{Was bringt uns das Ganze jetzt?}
+%\vspace{6em}
+%\begin{center}
+%	\begin{LARGE}
+%		Kanten innerhalb einer Station $\approx$ "{}Umstiege"{}
+%	\end{LARGE}
+%\end{center}
+%\end{frame}
 
 
 \begin{image-frame}
@@ -48,8 +48,8 @@
 	\begin{center}
 		\begin{tikzpicture}
 			\node (img1) {\includegraphics[width=.75\linewidth]{images/time-expanded_darmstadt-fdorf-no-interchange-time.pdf}};
-			\pause
-			\node (img2) at (img1.center) {\includegraphics[height=3cm]{images/thinkingning.png}};
+			%\pause
+			%\node (img2) at (img1.center) {\includegraphics[height=3cm]{images/thinkingning.png}};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -86,7 +86,7 @@
 	\end{itemize}
 
 	\begin{center}
-		\includegraphics[height=6cm]{images/time_expanded_constant_interchange_0.pdf} 
+		\includegraphics[height=5.8cm]{images/time_expanded_constant_interchange_0.pdf} 
 	\end{center}
 \end{frame}
 
@@ -97,7 +97,7 @@
 	\end{itemize}
 
 	\begin{center}
-		\includegraphics[height=6cm]{images/time_expanded_constant_interchange_1.pdf} 
+		\includegraphics[height=5.8cm]{images/time_expanded_constant_interchange_1.pdf} 
 	\end{center}
 \end{frame}
 
@@ -108,7 +108,7 @@
 	\end{itemize}
 
 	\begin{center}
-		\includegraphics[height=6cm]{images/time_expanded_constant_interchange_2.pdf} 
+		\includegraphics[height=5.8cm]{images/time_expanded_constant_interchange_2.pdf} 
 	\end{center}
 \end{frame}
 
@@ -119,7 +119,7 @@
 	\end{itemize}
 
 	\begin{center}
-		\includegraphics[height=6cm]{images/time_expanded_constant_interchange_3.pdf} 
+		\includegraphics[height=5.8cm]{images/time_expanded_constant_interchange_3.pdf} 
 	\end{center}
 \end{frame}
 
@@ -131,7 +131,7 @@
 	\end{itemize}
 
 	\begin{center}
-		\includegraphics[height=6cm]{images/time_expanded_variable_interchange.pdf} 
+		\includegraphics[height=5.8cm]{images/time_expanded_variable_interchange.pdf} 
 	\end{center}
 \end{frame}
 
@@ -142,25 +142,33 @@
 	\end{itemize}
 
 	\begin{center}
-		\includegraphics[height=6cm]{images/time_expanded_constant_interchange_4.pdf} 
+		\includegraphics[height=5.8cm]{images/time_expanded_constant_interchange_4.pdf} 
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{Time-Expanded}
+	\framesubtitle{Alle Konzepte auf einen Blick}
+	\begin{center}
+		\includegraphics[height=6cm]{images/time-expanded/overview.pdf} 
 	\end{center}
 \end{frame}
 
 
 \subsection{Verfeinerungen}
-\begin{frame}{Verfeinerung 1: Verkehrstage}
-	\begin{block}{Problem}
-		Der Takt unseres Fahrplans ist nicht nur ein Tag!
-	\end{block}
-
-	\begin{itemize}
-		\item Wie würde unser Graph wachsen, wenn wir $N$ Tage modellieren würden?
-		\begin{itemize}
-			\item Wir hätten etwa $N$-mal so viele Knoten und Kanten!
-		\end{itemize}
-	\end{itemize}
-
-\end{frame}
+%\begin{frame}{Verfeinerung 1: Verkehrstage}
+%	\begin{block}{Problem}
+%		Der Takt unseres Fahrplans ist nicht nur ein Tag!
+%	\end{block}
+%
+%	\begin{itemize}
+%		\item Wie würde unser Graph wachsen, wenn wir $N$ Tage modellieren würden?
+%		\begin{itemize}
+%			\item Wir hätten etwa $N$-mal so viele Knoten und Kanten!
+%		\end{itemize}
+%	\end{itemize}
+%
+%\end{frame}
 
 
 \begin{frame}{Verfeinerung 1: Verkehrstage}
@@ -195,21 +203,21 @@
 \end{frame}
 
 
-\begin{frame}{Verfeinerung 1: Verkehrstage}
-	\begin{block}{Problem}
-		Wie behandeln wir besuchte Knoten beim SP-Durchlauf, die invalide sind?
-	\end{block}
-
-	\begin{itemize}
-		\item Als Beispiel am Dijkstra: 
-		\begin{itemize}
-			\item $dist \rightarrow \infty$
-			\item Füge Knoten wieder am Ende des Sets ein ("{}Nächster"{} Tag).
-		\end{itemize}
-	\end{itemize}
-	\vspace{7em}
-	Weitere Verfeinerungen sind möglich\footnote{(Pyrga et. al.: \textit{Efficient Models for Timetable Information in Public Transportation Systems})}...
-\end{frame}
+%\begin{frame}{Verfeinerung 1: Verkehrstage}
+%	\begin{block}{Problem}
+%		Wie behandeln wir besuchte Knoten beim SP-Durchlauf, die invalide sind?
+%	\end{block}
+%
+%	\begin{itemize}
+%		\item Als Beispiel am Dijkstra: 
+%		\begin{itemize}
+%			\item $dist \rightarrow \infty$
+%			\item Füge Knoten wieder am Ende des Sets ein ("{}Nächster"{} Tag).
+%		\end{itemize}
+%	\end{itemize}
+%	\vspace{7em}
+%	Weitere Verfeinerungen sind möglich\footnote{(Pyrga et. al.: \textit{Efficient Models for Timetable Information in Public Transportation Systems})}...
+%\end{frame}
 
 
 \begin{frame}{Verfeinerung 2: Fußwege}
@@ -231,7 +239,6 @@
 \begin{frame}{Verfeinerung 2: Fußwege}
 	\begin{itemize}
 		\item Alle Fußwege im Graphen speichern ist nicht sinnvoll.
-		\pause
 		% Beachte Fußwege nur, wenn wir eine arrival-node verlassen
 		\item Speichere Wege in jeder Station, maskiere Wege in Suchanfragen als Kanten zwischen Stationen
 		\begin{itemize}
@@ -246,7 +253,7 @@
 
 \begin{frame}{Größenordnungen}
 	\begin{itemize}
-		\item Ein paar Zahlen im Jahr 2008 (\textbf{nur} Züge):
+		\item Ein paar Zahlen im Jahr 2008 (\textbf{nur} Schienenpersonenvekehr):
 	\end{itemize}
 \vspace{3em}
 	\begin{center}
@@ -265,7 +272,7 @@
 
 \begin{frame}{Größenordnungen}
 	\begin{itemize}
-		\item Ein paar Zahlen im Jahr 2008 (\textbf{nur} Züge):
+		\item Ein paar Zahlen im Jahr 2008 (\textbf{nur} Schienenpersonenvekehr):
 	\end{itemize}
 	\vspace{1em}
 	\begin{center}
@@ -287,10 +294,3 @@
 	\end{block}
 \end{frame}
 
-
-\begin{frame}{Time-Expanded}
-	\framesubtitle{Alle Konzepte auf einen Blick}
-	\begin{center}
-		\includegraphics[height=6cm]{images/time-expanded/overview.pdf} 
-	\end{center}
-\end{frame}
